@@ -1,11 +1,12 @@
 ## Terraform 
 As part of my Cloud & DevOps journey, I began learning Infrastructure as Code (IaC) and explored how Terraform simplifies infrastructure management.
 Here's what I learned.
+
 The Problem with Traditional Infrastructure:
-Environment inconsistencies (dev ≠ prod)
-Human errors
-Time-consuming setups
-Poor scalability
+- Environment inconsistencies (dev ≠ prod)
+- Human errors
+- Time-consuming setups
+- Poor scalability
 
 As systems grow, manual management becomes inefficient and risky.
 
