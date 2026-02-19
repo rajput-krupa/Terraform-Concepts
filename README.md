@@ -113,3 +113,96 @@ No surprise breakages in CI/CD pipelines
 That’s why version pinning is considered a best practice in Infrastructure as Code (IaC).
 
 
+--------------------------------------------------------------------------------------------------
+
+## Creating an AWS S3 Bucket Using Terraform
+
+Infrastructure should be repeatable, version-controlled, and predictable.
+
+Instead of manually creating an S3 bucket from the AWS Console, today I created it using Terraform Infrastructure as Code (IaC).
+
+Here’s the complete breakdown.
+
+![WhatsApp Image 2026-02-17 at 17 27 34](https://github.com/user-attachments/assets/63de6576-ead3-4962-a181-568598768bc2)
+
+Terraform does not directly create the bucket.
+The AWS Provider translates our configuration into AWS API calls.
+
+## ✅ Step 1: Prerequisites
+Make sure you have:
+
+- Terraform installed
+- AWS CLI installed
+- AWS credentials configured using:
+- aws configure
+- This stores your credentials locally so Terraform can authenticate with AWS.
+
+## ✅ Step 2: Define Provider Configuration
+Create a file called:
+
+provider.tf
+
+```bash
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+provider "aws" {
+  region = "us-east-1"
+}
+```
+## ✅ Step 4: Initialize Terraform
+```bash
+terraform init
+```
+## ✅ Step 5: Plan the Infrastructure
+```bash
+terraform plan
+```
+
+## ✅ Step 6: Apply the Configuration
+```bash
+terraform apply
+```
+Type yes.
+
+
+# Terraform will:
+
+- Call AWS API
+- Create the S3 bucket
+- Store resource info in terraform.tfstate
+- 🧾 Understanding State
+- Terraform creates a state file:
+
+## terraform.tfstate
+This file:
+
+- Tracks real infrastructure
+- Maps resources to configuration
+- Enables updates and deletions
+- In real-world projects, this should be stored remotely (like S3 + DynamoDB locking)
+
+## 💡 Production-Level Improvements
+If this were production:
+
+- Enable bucket versioning
+- Block public access
+- Enable encryption
+- Use remote backend for state
+- Add lifecycle rules
+
+Example:
+```bash
+resource "aws_s3_bucket_versioning" "versioning" {
+  bucket = aws_s3_bucket.my_bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+```
+# This is how we move from learning Terraform to thinking like a DevOps engineer.
