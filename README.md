@@ -40,6 +40,10 @@ Automation ensures consistency across environments.
 Terraform makes infrastructure scalable and version-controlled.
 IaC is a foundational skill in DevOps and Cloud Engineering
 
+| Terraform | Ansible | CloudFormation |
+|----------|----------|----------|
+| IaC Tool to provision (create)Infrastructure | IaC tool for configuration Management in infrastructure| Iac tool (AWS specific)|
+| Used to create infrastructure | Managing the infrastructure | Ready to use templates|
 
 
 ## Understanding Terraform Providers
