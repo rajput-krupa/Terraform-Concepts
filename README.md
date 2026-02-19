@@ -205,4 +205,4 @@ resource "aws_s3_bucket_versioning" "versioning" {
   }
 }
 ```
-# This is how we move from learning Terraform to thinking like a DevOps engineer.
+## This is how we move from learning Terraform to thinking like a DevOps engineer.
